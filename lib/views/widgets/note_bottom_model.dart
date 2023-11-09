@@ -20,9 +20,12 @@ class NoteModelbottomSheet extends StatelessWidget {
             ),
             CustomTextField(
               hint: 'Content',
-              maxline: 5,
+              maxline: 8,
             ),
             CustomButton(),
+            SizedBox(
+              height: 15,
+            ),
           ],
         ),
       ),
