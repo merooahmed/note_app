@@ -16,17 +16,22 @@ class NoteModelbottomSheet extends StatelessWidget {
       create: (context) => AddNoteCubit(),
       child: BlocConsumer<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
-          if (state is FailureNoteState) {}
+          if (state is FailureNoteState) {
+            print(state.erroMsg);
+          }
           if (state is SuccessNoteState) {
             Navigator.pop(context);
           }
         },
         builder: (context, state) {
           return AbsorbPointer(
-            absorbing: state is LoadingNoteState?true:false,
+            absorbing: state is LoadingNoteState ? true : false,
             child: Padding(
-              padding:  EdgeInsets.only(left: 16,right: 16,bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: SingleChildScrollView(child: AddNoteForm())),
+                padding: EdgeInsets.only(
+                    left: 16,
+                    right: 16,
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: SingleChildScrollView(child: AddNoteForm())),
           );
         },
       ),
