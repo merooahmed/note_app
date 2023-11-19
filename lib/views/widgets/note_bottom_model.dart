@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
 import 'package:noteapp/cubits/add_note_cubit.dart';
 import 'package:noteapp/cubits/add_note_state.dart';
+import 'package:noteapp/cubits/cubit/notes_cubit.dart';
 import 'package:noteapp/views/widgets/add_note_form.dart';
 import 'package:noteapp/views/widgets/custom_button.dart';
 import 'package:noteapp/views/widgets/custom_texxt_field.dart';
@@ -20,6 +21,7 @@ class NoteModelbottomSheet extends StatelessWidget {
             print(state.erroMsg);
           }
           if (state is SuccessNoteState) {
+            BlocProvider.of<NotesCubit>(context).fetchAllNotes();
             Navigator.pop(context);
           }
         },
